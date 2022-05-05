@@ -3,6 +3,9 @@ from flask import Blueprint
 auth = Blueprint('auth', __name__)
 
 
+'''this is just part of the tutorial, but it could be cool if we had like different profiles and stuff 
+so I think we should keep this for now '''
+
 @auth.route('/login')
 def login():
     return "<p> Login </p>"
