@@ -1,4 +1,5 @@
 import json
+import numpy as np
 from nltk_utils import tokenize, stem, bag_of_words
 
 with open('intents.json', 'r') as f:
@@ -11,5 +12,21 @@ xy = []
 for intent in intents['intents']:
     tag = intent['tag']
     tags.append(tag)
-    for pattern in intents['patterns']:
+    for pattern in intent['patterns']:
+        w = tokenize(pattern)
+        all_words.extend(w)
+        xy.append((w, tag))
 
+ignore_words = ['?', '.', ',', '!']
+all_words = [stem(w) for w in all_words if w not in ignore_words]
+all_words = sorted(set(all_words))
+tags = sorted(set(tags))
+
+X_train = []
+Y_train = []
+for (pattern_sentence, tag) in xy:
+    bag = bag_of_words(pattern_sentence, all_words)
+    X_train.append(bag)
+
+    label = tags.index(tag)
+    Y_train.append(label)
