@@ -9,21 +9,26 @@
         "Is anyone there?",
         "Hello",
         "Good day"
+
       ],
       "responses": [
         "Hey :-)",
         "Hello, thanks for visiting",
         "Hi there, what can I do for you?",
-        "Hi there, how can I help?"
+        "Hi there, how can I help?",
+        "Glad to see you, how are you feeling?",
+        "Hey what's up! What can I help you with?"
+
       ]
     },
     {
       "tag": "goodbye",
       "patterns": ["Bye", "See you later", "Goodbye"],
       "responses": [
-        "See you later, thanks for visiting",
-        "Have a nice day",
-        "Bye! Come back again soon."
+        "See you later, thanks for visiting! I'm always here if you need me!",
+        "Have a nice day! Please come back if you need any more help!",
+        "Bye! I hope this was helpful!"
+
       ]
     },
     {
@@ -78,6 +83,22 @@
       "responses": [
         "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
         "What did the buffalo say when his son left for college? Bison."
+      ]
+    },
+    {
+      "tag": "SOS",
+      "patterns": [
+        "I want to hurt myself",
+        "I want to kill myself",
+        "I want to end it",
+        "I want to hurt someone",
+        "I want to kill someone",
+        "I want to die",
+        "I feel like dying"
+      ],
+      "responses": [
+        "Help is always available! Talk to someone who can help by calling this number: 800-273-8255",
+        "Please stop to think about who this would affect. If you feel that you need help, you can always call 800-273-8255"
       ]
     }
   ]
