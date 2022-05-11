@@ -33,14 +33,14 @@
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure!"]
     },
     {
-      "tag": "items",
+      "tag": "depressed",
       "patterns": [
-        "Which items do you have?",
-        "What kinds of items are there?",
+        "I'm feeling depressed",
+        "I'm so sad",
         "What do you sell?"
       ],
       "responses": [
