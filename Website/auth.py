@@ -6,17 +6,17 @@ auth = Blueprint('auth', __name__)
 '''this is just part of the tutorial, but it could be cool if we had like different profiles and stuff 
 so I think we should keep this for now '''
 
-@auth.route('/login')
+@auth.route('/Chatbot')
 def login():
-    return "<p> Login </p>"
+    return "<p> Chatbot </p>"
 
 
-@auth.route('/logout')
+@auth.route('/TaskList')
 def logout():
-    return "<p> Logout </p>"
+    return "<p> TaskList </p>"
 
 
-@auth.route('/sign-up')
+@auth.route('/Journal')
 def sign_up():
-    return "<p> Sign Up </p>"
+    return "<p> Journal </p>"
 
