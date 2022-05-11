@@ -41,11 +41,10 @@
       "patterns": [
         "I'm feeling depressed",
         "I'm so sad",
-        "What do you sell?"
+        "I'm not feeling well"
       ],
       "responses": [
-        "We sell coffee and tea",
-        "We have coffee and tea"
+        "So"
       ]
     },
     {
