@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 auth = Blueprint('auth', __name__)
 
@@ -8,15 +8,15 @@ so I think we should keep this for now '''
 
 @auth.route('/Chatbot')
 def login():
-    return "<p> Chatbot </p>"
+    return render_template("Chatbot.html", text = "Chat Logs")
 
 
 @auth.route('/TaskList')
 def logout():
-    return "<p> TaskList </p>"
+    return render_template("TaskList.html")
 
 
 @auth.route('/Journal')
 def sign_up():
-    return "<p> Journal </p>"
+    return render_template("Journal.html")
 
