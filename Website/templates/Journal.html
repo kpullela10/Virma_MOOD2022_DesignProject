@@ -1,1 +1,33 @@
-{% extends "base.html" %} {% block title %}Journal{% endblock %}
+{% extends "base.html" %} {% block title %}Journal{% endblock %}{% block
+body %}
+<form method="POST">
+    <br />
+<h3 align="center">Journal</h3>
+<br />
+    <br />
+<div class="form-group">
+    <label for="title">Today's Journal Title</label>
+    <input
+      type="title"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Enter journal title here:"
+    />
+  </div>
+
+ <div class="form-group">
+    <label for="journal">Journal</label>
+    <input
+      type="journal"
+      class="form-control"
+      id="journal"
+      name="journal"
+      placeholder="How are you feeling today?"
+    />
+  </div>
+    <br />
+  <button type="submit" class="btn btn-primary">Finish and Save</button>
+</form>
+{% endblock %}
+
