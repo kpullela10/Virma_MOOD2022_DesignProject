@@ -1,12 +1,34 @@
 {% extends "base.html" %} {% block title %}Chatbot{% endblock %}
 
-<html>
-    <head></head>
-    <body>
-        <form>
-            <input type="text" name="pname" placeholder="Chat"/>
-            <input tpye="file" name="filename" placeholder="image"/>
+
+{% block style %}
+<style>
+    #txt{
+        width:737px;
+        height:50px;
+        font-size:15px;
+    }
+    #enter{
+        width:130px;
+        height:50px;
+        font-size:15px;
+    }
+    #dd{
+        color:white;
+        background-color: black;
+        padding-top: 10px;
+        height:40px;
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+       <div id="dd">
+            <hi>Talk to Virma!</hi></div>
+        <form enctype="multipart/form-data" method="post" action="show.py">
             <textarea cols="100" rows="20" name="des"></textarea>
+            <input id="txt" type="text" name="pname" placeholder="Chat"/>
+            <input id="enter" type="submit" name="sub" value="Enter">
         </form>
-    </body>
-</html>
+{% endblock %}
