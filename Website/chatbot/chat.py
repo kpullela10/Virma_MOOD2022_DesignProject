@@ -24,12 +24,12 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Virma"
-print("Lets chat! Type 'Goodbye' or 'Quit' to exit")
+print("Hi, I'm Virma your virtual mental health assistant. Lets chat! Type 'Quit' to exit")
 
 while True:
     sentence = input("You: ")
     if sentence == "quit" or sentence == "Quit":
-        print(f"{bot_name}: {random.choice(intent['responses'])}")
+        print(f"{bot_name}: Goodbye, come back any time!")
         quit()
         break
 
