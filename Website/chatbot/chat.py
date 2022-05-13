@@ -24,16 +24,9 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Virma"
-print("Hi, I'm Virma your virtual mental health assistant. Lets chat! Type 'Quit' to exit")
 
-while True:
-    sentence = input("You: ")
-    if sentence == "quit" or sentence == "Quit":
-        print(f"{bot_name}: Goodbye, come back any time!")
-        quit()
-        break
-
-    sentence = tokenize(sentence)
+def get_response(message):
+    sentence = tokenize(message)
     X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
@@ -48,9 +41,11 @@ while True:
     if actual_probability.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
-    else:
-        print(f"{bot_name}: I'm sorry, I'm not sure I understand. Do you mind rephrasing what you just said?"
-              f" Also, make sure that your messages are in English, coherent,"
-              f" aren't links, and don't have special characters."
-              f" Thanks, sorry about that!")
+                return random.choice(intent['responses'])
+
+    return "I'm sorry, I'm not sure I understand. Do you mind rephrasing what you just said? Also, make sure that " \
+           "your messages are in English, coherent, aren't links, and don't have special characters. Thanks, " \
+           "sorry about that! "
+
+
+
