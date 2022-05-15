@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint
+
+tasklist = Blueprint('TL_base.html', __name__, template_folder='templates')
 
 app = Flask(__name__)
 

@@ -3,20 +3,16 @@ from flask import Blueprint, render_template
 auth = Blueprint('auth', __name__)
 
 
-'''this is just part of the tutorial, but it could be cool if we had like different profiles and stuff 
-so I think we should keep this for now '''
-
 @auth.route('/Chatbot')
 def login():
-    return render_template("Chatbot.html", text = "Chat Logs")
+    return render_template("Chatbot.html", text="Chat Logs")
 
 
 @auth.route('/TaskList')
-def logout():
-    return render_template("TaskList.html")
+def open_tasklist():
+    return render_template("TL_base.html")
 
 
 @auth.route('/Journal')
-def sign_up():
+def open_journals():
     return render_template("Journal.html")
-
