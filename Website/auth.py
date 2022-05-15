@@ -7,8 +7,8 @@ auth = Blueprint('auth', __name__)
 so I think we should keep this for now '''
 
 @auth.route('/Chatbot')
-def Chatbot():
-    return render_template("Chatbot.html")
+def login():
+    return render_template("Chatbot.html", text = "Chat Logs")
 
 
 @auth.route('/TaskList')

@@ -73,4 +73,3 @@ if __name__ == "__main__":
     app = ChatApplication()
     app.run()
 
-# TODO: fix spacing between text and scroll bar
