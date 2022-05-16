@@ -16,3 +16,8 @@ def open_tasklist():
 @auth.route('/Journal')
 def open_journals():
     return render_template("Journal.html")
+
+
+@auth.route('/Sign-up')
+def sign_up():
+    return render_template("Sign-up.html")
