@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block title %}Chatbot{% endblock %} {% block style
-%}
+{% extends "base.html" %} {% block title %}Chatbot{% endblock %}
+
+{% block style %}
 <style>
 	#txt {
 		width: 737px;
@@ -65,7 +66,9 @@
 		border-radius: 0.3em;
 	}
 </style>
-{% endblock %} {% block body %}
+{% endblock %}
+
+{% block content %}
 <div id="dd">
 	<hi>Talk to Virma!</hi>
 </div>
@@ -123,6 +126,7 @@
 			});
 	}
 	function updateChatDisplay(chatDisplay) {
+
 		let array = messages;
 		let toAdd = "";
 		for (let index = array.length - 1; index >= 0; index--) {

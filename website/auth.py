@@ -82,8 +82,9 @@ def home():
 
     return render_template("notes.html", user=current_user)
 
-@auth.route('/Chatbot', methods=[''])
-
+@auth.route('/Chatbot')
+def Chatbot():
+    return render_template("Chatbot.html", user=current_user, text="Chat Logs")
 
 @auth.route('/delete-note', methods=['POST'])
 def delete_note():
