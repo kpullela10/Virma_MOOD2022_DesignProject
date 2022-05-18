@@ -5,6 +5,7 @@ pip install numpy
 pip install flask_sqlAlchemy
 pip install torch
 pip install nltk
+pip install flask_login
 
 
 python train.py
