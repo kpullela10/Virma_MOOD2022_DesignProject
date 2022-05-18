@@ -24,7 +24,7 @@ class ChatApplication:
 
         # head label
         head_label = Label(self.window, bg=BG_COLOR, fg=TEXT_COLOR,
-                           text="Welcome", font=FONT_BOLD, pady=10)
+                           text="Talk to Virma!", font=FONT_BOLD, pady=10)
         head_label.place(relwidth=1)
 
         line = Label(self.window, width=560, bg=BG_GREY)

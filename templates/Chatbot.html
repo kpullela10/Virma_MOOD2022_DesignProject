@@ -1,0 +1,141 @@
+{% extends "base.html" %} {% block title %}Chatbot{% endblock %} {% block style
+%}
+<style>
+	#txt {
+		width: 737px;
+		height: 50px;
+		font-size: 15px;
+	}
+	#enter {
+		width: 130px;
+		height: 50px;
+		font-size: 15px;
+	}
+	#dd {
+		color: white;
+		background-color: black;
+		padding-top: 10px;
+		height: 40px;
+	}
+	#display-box {
+		border: solid;
+		height: 50vh;
+		width: 80vw;
+		margin: 2em auto;
+		padding: 1em;
+		border-radius: 10px;
+		background-color: rgba(0, 0, 255, 0.172);
+		overflow: scroll;
+
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.message {
+		border: solid;
+		padding: 0.5em;
+		width: fit-content;
+		min-width: 20%;
+		max-width: 70%;
+		margin-bottom: 0.3em;
+	}
+	.user {
+		background-color: white;
+		border-radius: 10px 10px 0px 10px;
+		margin-left: auto;
+		margin-right: 0;
+	}
+	.bot {
+		background-color: black;
+		border-radius: 10px 10px 10px 0;
+		color: white;
+	}
+	.form {
+		display: flex;
+		width: 80vw;
+		margin: 2em auto;
+	}
+	.form > * {
+		min-height: 2.5em;
+	}
+	#message-box {
+		flex-grow: 4;
+	}
+	#send-button {
+		flex-grow: 1;
+		border-radius: 0.3em;
+	}
+</style>
+{% endblock %} {% block body %}
+<div id="dd">
+	<hi>Talk to Virma!</hi>
+</div>
+<div id="display-box"></div>
+<div class="form">
+	<input id="message-box" placeholder="Chat" />
+	<button id="send-button">Enter</button>
+</div>
+<!-- <form>
+
+	<input id="enter" type="submit" name="sub" value="Enter" />
+</form> -->
+
+<script>
+	const sendButton = document.querySelector("#send-button");
+	const messageBox = document.querySelector("#message-box");
+	let messages = [];
+
+	beginChat();
+
+	function beginChat() {
+		sendButton.addEventListener("click", () => send());
+
+		messageBox.addEventListener("keyup", ({ key }) => {
+			if (key === "Enter") {
+				send();
+			}
+		});
+	}
+
+	function send() {
+		let messageText = messageBox.value;
+
+		if (messageText === "") return;
+
+		let message = { name: "user", message: messageText };
+
+		messages.push(message);
+
+		fetch("/bot_response", {
+			method: "POST",
+			body: JSON.stringify({ sent_message: messageText }),
+			mode: "cors",
+			headers: { "Content-type": "application/json" },
+		})
+			.then((rep) => rep.json())
+			.then((rep) => {
+				let replyText = { name: "bot", message: rep.message };
+				messages.push(replyText);
+				updateChatDisplay(document.querySelector("#display-box"));
+			})
+			.catch((error) => {
+				console.error(error);
+				updateChatDisplay(document.querySelector("#display-box"));
+			});
+	}
+	function updateChatDisplay(chatDisplay) {
+		let array = messages;
+		let toAdd = "";
+		for (let index = array.length - 1; index >= 0; index--) {
+			const element = array[index];
+			toAdd +=
+				'<div class="message ' +
+				element.name +
+				'">' +
+				element.message +
+				"</div>";
+		}
+		chatDisplay.innerHTML = toAdd;
+		messageBox.value = "";
+	}
+</script>
+{% endblock %}
