@@ -18,6 +18,7 @@ class ChatApplication:
         self.window.mainloop()
 
     def _setup_main_window(self):
+        # handles visual aspect of chatbot
         self.window.title("Chat")
         self.window.resizable(width=False, height=False)
         self.window.configure(width=600, height=600, bg=BG_COLOR)
@@ -44,11 +45,13 @@ class ChatApplication:
         self.message_entry.focus()
         self.message_entry.bind("<Return>", self.on_enter_pressed)
 
+
         send_button = Button(bottom_label, text="Send", font=FONT_BOLD, width=20, bg=BG_GREY,
                              command=lambda: self.on_enter_pressed(None))
         send_button.place(relx=0.77, rely=0.008, relheight=0.06, relwidth=0.22)
 
     def on_enter_pressed(self, event):
+        # displays user message
         message = self.message_entry.get()
         self._insert_message(message, "You")
 
@@ -61,6 +64,7 @@ class ChatApplication:
         self.text_widget.insert(END, message1)
         self.text_widget.configure(cursor="arrow", state=DISABLED)
 
+        # displays bot messages
         message2 = f"{bot_name}: {get_response(message)}\n\n"
         self.text_widget.configure(cursor="arrow", state=NORMAL)
         self.text_widget.insert(END, message2)

@@ -6,6 +6,7 @@ import json
 
 views = Blueprint('views', __name__)
 
+# once logged in, this page serves as the home page
 
 @views.route('/')
 @login_required

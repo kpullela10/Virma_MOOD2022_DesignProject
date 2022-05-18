@@ -1,3 +1,4 @@
+
 import numpy as np
 import random
 import json
@@ -16,6 +17,7 @@ all_words = []
 tags = []
 xy = []
 
+# split up words in the input
 for intent in intents['intents']:
     tag = intent['tag']
     tags.append(tag)
@@ -24,11 +26,14 @@ for intent in intents['intents']:
         all_words.extend(w)
         xy.append((w, tag))
 
+# reduce all words to their root word
 ignore_words = ['?', '.', ',', '!']
 all_words = [stem(w) for w in all_words if w not in ignore_words]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
+
+# how many instances of word?
 X_train = []
 Y_train = []
 for (pattern_sentence, tag) in xy:
@@ -40,7 +45,6 @@ for (pattern_sentence, tag) in xy:
 
 X_train = np.array(X_train)
 Y_train = np.array(Y_train)
-
 
 class ChatDataset(Dataset):
     def __init__(self):
@@ -55,7 +59,7 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 
-# example hyper parameters, DO NOT USE
+# example hyper parameters
 batch_size = 8
 hidden_size = 8
 output_size = len(tags)
@@ -72,6 +76,7 @@ model = NeuralNetwork(input_size, hidden_size, output_size).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr= learning_rate)
 
+# training the model
 for epoch in range(num_epochs):
     for (words, labels) in train_loader:
         words = words.to(device)
@@ -97,7 +102,7 @@ data = {
     "all_words": all_words,
     "tags": tags,
 }
-
+# save to local file
 FILE = "data.pth"
 torch.save(data, FILE)
 

@@ -7,7 +7,7 @@ import json
 
 auth = Blueprint('auth', __name__)
 
-
+# handles security for user login, routes user to login html
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -27,14 +27,14 @@ def login():
 
     return render_template("login.html", user=current_user)
 
-
+# logs user out of their account
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
-
+# creates a new user, saves to database if valid
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -65,7 +65,7 @@ def sign_up():
 
     return render_template("sign_up.html", user=current_user)
 
-
+# Handles user input for journals, saves to database if valid
 @auth.route('/Journals', methods=['GET', 'POST'])
 @login_required
 def home():
@@ -81,11 +81,11 @@ def home():
             flash('Note added!', category='success')
 
     return render_template("notes.html", user=current_user)
-
+# user is routed to chatbot
 @auth.route('/Chatbot')
 def Chatbot():
     return render_template("Chatbot.html", user=current_user, text="Chat Logs")
-
+# deletes previous journal entry with button
 @auth.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data)

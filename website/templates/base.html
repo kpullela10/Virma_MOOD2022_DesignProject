@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- handles all basic features, such as navigation bar -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +32,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
+          <!-- only visible to logged in users-->
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="Journals" href="/Journals">Journals</a>

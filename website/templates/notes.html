@@ -2,9 +2,11 @@
 %}
 <h1 align="center">Journals</h1>
 <br />
+<!-- Handles user interface for Journals -->
 <h2 align="center" style="color:blue;font-size:20px;">Need to vent or jot down some thoughts? Open a new entry and write away!</h2>
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
+  <!-- list all journal entries-->
   <li class="list-group-item">
     {{ note.data }}
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">

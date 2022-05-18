@@ -1,7 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
-
+# creates sql database to store journals and users
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)

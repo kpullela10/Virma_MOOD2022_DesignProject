@@ -25,7 +25,7 @@ model.eval()
 
 bot_name = "Virma"
 
-
+# bot recieves message and outputs most probable appropriate response from intents
 def get_response(message):
     sentence = tokenize(message)
     X = bag_of_words(sentence, all_words)
@@ -43,7 +43,7 @@ def get_response(message):
         for intent in intents['intents']:
             if tag == intent["tag"]:
                 return random.choice(intent['responses'])
-
+    # fail-safe in case no response meets probability criteria
     return "I'm sorry, I'm not sure I understand. Do you mind rephrasing what you just said? Also, make sure that " \
            "your messages are in English, coherent, aren't links, and don't have special characters. Thanks, " \
            "sorry about that! "

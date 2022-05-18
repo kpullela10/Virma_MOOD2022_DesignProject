@@ -1,3 +1,5 @@
+/* Creates static functions to handle deletion*/
+
 function deleteNote(noteId) {
   fetch("/delete-note", {
     method: "POST",
